@@ -43,23 +43,23 @@ services:
     networks:
       - expense
 
-  backend:
-    image: udaykirane98/backend:v2
+  # backend:
+  #   image: udaykirane98/backend:v2
     
-    command: sh -c "sleep 20 && node /opt/server/index.js"
-    container_name: backend
-    depends_on:
-      - mysql
-    networks:
-      - expense
+  #   command: sh -c "sleep 20 && node /opt/server/index.js"
+  #   container_name: backend
+  #   depends_on:
+  #     - mysql
+  #   networks:
+  #     - expense
 
-  frontend:
-    image: udaykirane98/frontend:v2
-    ports:
-      - 80:80
-    container_name: frontend
-    depends_on:
-      - backend
-    networks:
-      - expense
+  # frontend:
+  #   image: udaykirane98/frontend:v2
+  #   ports:
+  #     - 80:80
+  #   container_name: frontend
+  #   depends_on:
+  #     - backend
+  #   networks:
+  #     - expense
 
