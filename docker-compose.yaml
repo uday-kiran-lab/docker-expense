@@ -8,7 +8,7 @@ services:
     image: udaykirane98/mysql:v3
     container_name: mysql # --name mysql
     volumes:
-    - mysql:/var/lib/mysql # -v mysql:/var/lib/mysql
+      - mysql:/var/lib/mysql # -v mysql:/var/lib/mysql
   backend:
     image: udaykirane98/backend:v3
     container_name: backend
