@@ -5,12 +5,12 @@ volumes:
   mysql:  # docker volume create mysql
 services:
   mysql:
-    image: udaykirane98/mysql:v3
+    image: udaykirane98/mysql:v2
     container_name: mysql # --name mysql
     volumes:
       - mysql:/var/lib/mysql # -v mysql:/var/lib/mysql
   backend:
-    image: udaykirane98/backend:v3
+    image: udaykirane98/backend:v2
     container_name: backend
     command: sh -c "sleep 60 && node /opt/server/index.js"
     depends_on:
@@ -18,7 +18,7 @@ services:
     
 
   frontend:
-    image: udaykirane98/frontend:v3
+    image: udaykirane98/frontend:v2
     container_name: frontend
     ports:
     - 80:80
