@@ -1,65 +1,65 @@
+version: "3"
+networks:
+  expense:
+volumes:
+  mysql:  # docker volume create mysql
+services:
+  mysql:
+    image: udaykirane98/mysql:v3
+    container_name: mysql # --name mysql
+    volumes:
+    - mysql:/var/lib/mysql # -v mysql:/var/lib/mysql
+  backend:
+    image: udaykirane98/backend:v3
+    container_name: backend
+    command: sh -c "sleep 60 && node /opt/server/index.js"
+    depends_on:
+      - mysql
+    
+
+  frontend:
+    image: udaykirane98/frontend:v3
+    container_name: frontend
+    ports:
+    - 80:80
+    depends_on:
+      - backend
+
+
+
 # version: "3"
 # networks:
-#   expense:
+#   expense:  # docker network create expense
 # volumes:
-#   mysql:  # docker volume create mysql
+#   mysql:    #docker volume create mysql
+
 # services:
 #   mysql:
-#     image: udaykirane98/mysql:v2
-#     container_name: mysql # --name mysql
+#     image: promptforai/mysql:v1
+    
 #     volumes:
-#     - mysql:/var/lib/mysql # -v mysql:/var/lib/mysql
+#       - mysql:/var/lib/mysql
+#     container_name: mysql
+#     networks:
+#       - expense
+
 #   backend:
 #     image: udaykirane98/backend:v2
+    
+#     command: sh -c "sleep 20 && node /opt/server/index.js"
 #     container_name: backend
-#     command: sh -c "sleep 60 && node /opt/server/index.js"
 #     depends_on:
 #       - mysql
-    
+#     networks:
+#       - expense
 
 #   frontend:
 #     image: udaykirane98/frontend:v2
-#     container_name: frontend
 #     ports:
-#     - 80:80
+#       - 80:80
+#     container_name: frontend
 #     depends_on:
 #       - backend
-
-
-
-version: "3"
-networks:
-  expense:  # docker network create expense
-volumes:
-  mysql:    #docker volume create mysql
-
-services:
-  mysql:
-    image: promptforai/mysql:v1
-    
-    volumes:
-      - mysql:/var/lib/mysql
-    container_name: mysql
-    networks:
-      - expense
-
-  backend:
-    image: udaykirane98/backend:v2
-    
-    command: sh -c "sleep 20 && node /opt/server/index.js"
-    container_name: backend
-    depends_on:
-      - mysql
-    networks:
-      - expense
-
-  frontend:
-    image: udaykirane98/frontend:v2
-    ports:
-      - 80:80
-    container_name: frontend
-    depends_on:
-      - backend
-    networks:
-      - expense
+#     networks:
+#       - expense
 
